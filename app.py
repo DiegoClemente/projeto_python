@@ -26,7 +26,8 @@ def create_task():
 
     return jsonify({
         "message": f"{len(created_tasks)} task(s) created successfully",
-        "tasks": created_tasks
+        "tasks": created_tasks,
+        "id": task.id
     }), 201
 
 
