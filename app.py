@@ -33,7 +33,12 @@ def create_task():
 
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
-    return jsonify([task.to_dict() for task in tasks.values()], {"Total tasks": len(tasks)}), 200
+        task_list = [task.to_dict() for task in tasks.values()]
+        output = {
+            "tasks": task_list,
+            "total_tasks": len(tasks)
+        } 
+        return jsonify(output), 200
 
 @app.route("/tasks/<int:task_id>", methods=["GET"])
 def get_task(task_id):
